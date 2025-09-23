@@ -1,0 +1,30 @@
+/* Centrer la section about_me et son contenu */
+.about_me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Styliser l'image */
+.profile-img {
+    width: 150px;        /* taille de l'image */
+    height: 150px;       /* taille fixe */
+    border-radius: 50%;  /* image ronde */
+    object-fit: cover;   /* recadrage propre */
+    border: 3px solid #333; /* contour optionnel */
+    margin-bottom: 20px;
+}
+
+/* Styliser le texte */
+.profile h2 {
+    margin: 10px 0 5px;
+    font-size: 24px;
+}
+
+.profile h4 {
+    margin: 0;
+    font-weight: normal;
+    color: #555;
+}
