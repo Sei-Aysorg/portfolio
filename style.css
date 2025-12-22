@@ -1,82 +1,298 @@
+	/* Barre de navigation */
+	.Acceuil {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		background-color: #f3f3f3;
+		position: fixed;
+  		top: 0;
+ 		width: 100%;
+ 		z-index: 1000;     /* très haut pour passer au-dessus */
+	}
 
-body {
-  background-image: url("images/tec.jpg"); /* ou "images/background.jpg" si elle est dans un dossier */
-  background-size: cover;       /* L’image couvre tout l’écran */
-  background-position: center;  /* Centrée */
-  background-repeat: no-repeat; /* Pas de répétition */
-  height: 100vh;                /* Hauteur = 100% de la fenêtre */
-  margin: 0;
-}
+	nav a {
+		float: left;
+		display: block;
+		padding: 14px 16px; /* Ajoutez un peu de rembourrage entre chaque élément <a>*/
+		text-decoration: none; /*Supprime le sous-texte des liens*/
+		color: #666666;
+	  	text-align: center;
+	  	border-right: 1px solid #bbbbbb;
 
-.Acceuil {
-  display: flex;
-  justify-content: space-between; /* espace entre nom et menu */
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f5f5f5;
-  background-color: transparent; /* Enlève le fond gris */
-  box-shadow: none;              /* Si y’a une ombre */
-  border: none;                  /* Si y’a une bordure */
+	}
 
-}
+	nav a:hover {
+		background-color: #dddddd;
+	}
 
-nav a {
-  text-decoration: none; /* pas de soulignement par défaut */
-  color: white;          /* ou la couleur que tu veux */
-  font-weight: bold;
-}
+	nav a.active {
+  		background-color: #04AA6D;
+	}
 
-nav a:hover {
-  text-decoration: underline; /* soulignement au survol */
-}
+	nav a:last-child {
+  		border-right: none;
+	}
 
-.Acceuil{
-  position: relative; /* Nécessaire pour que le ::before soit bien positionné */
-  z-index: 1;          /* Assure que le contenu reste visible au-dessus de l’overlay */
-}
+	.menu {
+		float: right;
+		margin-left: auto;
+	}
 
-.Acceuil::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #3b3d3f; /* Couleur sombre */
-  opacity: 0.6;         /* Ajuste la transparence selon ton style */
-  z-index: -1;          /* Place l’overlay derrière le contenu du menu */
-}
+	div a.nom {
+    	text-decoration: none;
+    	padding: 14px 16px;
+    	float: left;
+    	color: blueviolet;
+	}
 
 
-.nom {
-  font-weight: bold;
-  font-size: 20px;
-}
+	.nom:hover{
+		background-color: darkgray;
+		color: darkgoldenrod;
+	}
 
-.nom a {
-    text-decoration: none;
-    color: whitesmoke;
-    font-weight: 500;
 
-}
+	/*body page 1*/
+	.intro {
+		background-image: url("images/tec.jpg");
+		background-size: cover;       /* L’image couvre tout l’écran */
+		background-position: center;  /* Centrée */
+		background-repeat: no-repeat; /* Pas de répétition */
+		height: 100vh;                /* Hauteur = 100% de la fenêtre */
+	  
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 60px;
+		color: #f5f5f5;
+		min-height: 100vh;     /* hauteur écran */
+ 		align-items: center;      /* centre verticalement */
+  		text-align: center;       /* centre le texte */
+	}
 
-.nom a:hover{
-    text-decoration: underline; /* soulignement au survol */
-}
 
-.menu a {
-  margin-left: 15px;
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-}
+	.overlay {
+		background: rgba(0,0,0,0.4); /* voile sombre pour contraste */
+		padding: 40px;
+		border-radius: 12px;
+	}
 
-.bouton {
-  color: black; 
- }
+	/*saisis de texte */ 
+	.typing::after {
+		content: "|";
+		margin-left: 6px;
+		animation: blink 1s infinite;
+	}
 
-.bouton:hover {
-  background-color: skyblue;
-  border: 2px solid skyblue; /* ou autre couleur/style */
-}
+	@keyframes blink {
+		0%, 50%, 100% { opacity: 1; }
+		25%, 75% { opacity: 0; }
+	}
 
+	.highlight {
+		color: #38bdf8;
+	}
+
+	.typing {
+		transition: opacity 0.8s;
+	}
+
+	/*image i'm fine */
+
+	.ellipse-container {
+		width: 300px;              /* largeur */
+		height: 480px;             /* hauteur */
+		overflow: hidden;          /* masque ce qui dépasse */
+		margin: 50px 0 50px 110px; /* ajoute 200px de marge à gauche */
+		border: 4px solid darkblue; /* bordure rouge */
+
+	  /* arrondir uniquement haut et bas */
+		border-top-left-radius: 150px;
+		border-top-right-radius: 150px;
+		border-bottom-left-radius: 150px;
+		border-bottom-right-radius: 150px;
+		left: 0;            /* colle à gauche */
+		top: 100px;         /* ajuste la hauteur */
+		/* animation flottante */
+		animation: float 4s ease-in-out infinite;
+	}
+	.ellipse-container img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;          /* remplit sans déformer */
+		z-index: 1; /* plus bas que la navbar */
+	}
+
+	/* Animation keyframes */
+	@keyframes float {
+		0%   { transform: translateY(0); }
+		50%  { transform: translateY(-20px); } /* monte légèrement */
+		100% { transform: translateY(0); }     /* redescend */
+	}
+	
+	/*body suite */
+	body {
+		background-color: 	#f5f5f5;
+	}
+
+	.about {
+		max-width: 640px;
+		margin: 0 auto;              /* centre le bloc */
+		font-family: "Inter", "Montserrat", system-ui, sans-serif;
+		color: #e5e7eb;              /* texte principal clair */
+		max-width: 500px;
+		color: #f0f0f0;
+		font-family: 'Montserrat', sans-serif;
+		margin-top: 50px;
+	}
+
+	/* Titre h3 */
+	.about h3 {
+		font-size: 2rem;             /* taille ~32px */
+		font-weight: 600;
+		margin-bottom: 1rem;
+		color: #1f6feb;              /* accent bleu moderne */
+		border-bottom: 2px solid #1f6feb; /* filet bleu sous le titre */
+		display: inline-block;
+		padding-bottom: 5px;
+		letter-spacing: 0.5px;
+	}
+
+/* Paragraphe */
+	.about p {
+		font-size: 1.125rem;         /* ~18px */
+		line-height: 1.7;            /* lisibilité */
+		color: #9ca3af;              /* gris clair */
+		margin-bottom: 1.5rem;
+		text-wrap: pretty;
+	}
+
+	/* Accent rouge dans le texte */
+	.presentation {
+		display: flex;              /* aligne en parallèle */
+		align-items: flex-start;    /* aligne en haut */
+		justify-content: center;    /* centre horizontalement */
+		gap: 50px;                  /* espace entre image et texte */
+		margin: 60px auto;
+		max-width: 1100px;
+	}
+
+	.about h3 {
+		font-size: 1.8rem;
+		margin-bottom: 15px;
+		color: #1f6feb;
+		border-bottom: 2px solid #1f6feb;
+		display: inline-block;
+		padding-bottom: 5px;
+	}
+
+	.about p {
+		font-size: 1.1rem;
+		line-height: 1.6;
+		color: gray;
+	}
+
+	.link {
+	  	padding: 14px 16px;
+	 	list-style-type: none;
+	  	display: flex;
+	  	justify-content: space-between; /* pousse les enfants aux extrémités */
+	  	align-items: center;            /* aligne verticalement */
+	  	margin-top: 50px;
+
+	}
+
+	ul li a {
+		text-decoration: none;
+		padding: 16px 18px;
+		background-color: blueviolet ;
+		border-top-left-radius: 150px;
+		border-top-right-radius: 150px;
+		border-bottom-left-radius: 150px;
+		border-bottom-right-radius: 150px;
+		color: ;
+	}
+
+	ul li a:hover{
+			
+	}
+/*binaire image*/
+
+/*image i'm fine */
+
+	.binaire {
+		width: 300px;              /* largeur */
+		height: 480px;             /* hauteur */
+		overflow: hidden;          /* masque ce qui dépasse */
+		margin: 50px 150px 50px auto;
+
+		border: 4px solid darkblue; /* bordure rouge */
+
+	  /* arrondir uniquement haut et bas */
+		border-top-left-radius: 150px;
+		border-top-right-radius: 150px;
+		border-bottom-left-radius: 150px;
+		border-bottom-right-radius: 150px;
+		left: 0;            /* colle à gauche */
+		top: 100px;         /* ajuste la hauteur */
+		/* animation flottante */
+		animation: float 4s ease-in-out infinite;
+	}
+	.binaire img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;          /* remplit sans déformer */
+		z-index: 1; /* plus bas que la navbar */
+	}
+
+	/* Animation keyframes */
+	@keyframes float {
+		0%   { transform: translateY(0); }
+		50%  { transform: translateY(-20px); } /* monte légèrement */
+		100% { transform: translateY(0); }     /* redescend */
+	}
+
+
+	.bts{
+		display: flex;              /* aligne en parallèle */
+		align-items: flex-start;    /* aligne en haut */
+		justify-content: center;    /* centre horizontalement */
+		gap: 50px;                  /* espace entre image et texte */
+		margin: 60px auto;
+		max-width: 1100px;
+	}
+
+	.about2 p {
+		font-size: 1.125rem;         /* ~18px */
+		line-height: 1.7;            /* lisibilité */
+		color: #9ca3af;              /* gris clair */
+		margin-bottom: 1.5rem;
+		text-wrap: pretty;
+	}
+
+	.about2 h3 {
+		font-size: 1.8rem;
+		margin-bottom: 15px;
+		color: #1f6feb;
+		border-bottom: 2px solid #1f6feb;
+		display: inline-block;
+		padding-bottom: 5px;
+	}
+
+	.about2 p {
+		font-size: 1.1rem;
+		line-height: 1.6;
+		color: gray;
+	}
+
+	.about2 {
+		max-width: 640px;
+		margin: 0 auto;              /* centre le bloc */
+		font-family: "Inter", "Montserrat", system-ui, sans-serif;
+		color: #e5e7eb;              /* texte principal clair */
+		max-width: 500px;
+		color: #f0f0f0;
+		font-family: 'Montserrat', sans-serif;
+		padding-top: 40px;
+	}
