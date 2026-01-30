@@ -51,3 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Lancer la boucle
   nextText();
 });
+
+        function toggleMetier(button) {
+            // Récupère le contenu associé
+            const content = button.nextElementSibling;
+            
+            // Toggle la classe active
+            button.classList.toggle('active');
+            content.classList.toggle('active');
+        }
